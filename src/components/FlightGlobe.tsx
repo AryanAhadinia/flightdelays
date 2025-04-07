@@ -83,11 +83,11 @@ const FlightGlobe: React.FC = () => {
                 arcDashAnimateTime={6000}
                 arcDashLength={0.4}
                 arcDashGap={1}
-                arcLabel={(d: FlightArc) => d.flight}
+                arcLabel={(d: any) => (d as FlightArc).flight}
                 pointsData={airportsData}
-                pointLat={(d: Airport) => d.lat}
-                pointLng={(d: Airport) => d.lng}
-                pointLabel={(d: Airport) => d.name}
+                pointLat={(d: any) => (d as Airport).lat}
+                pointLng={(d: any) => (d as Airport).lng}
+                pointLabel={(d: any) => (d as Airport).name}
                 pointColor={() => 'orange'}
                 pointAltitude={0.001}
                 pointRadius={0.2}
