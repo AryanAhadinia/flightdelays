@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Globe from 'react-globe.gl';
+import './FlightGlobe.css';
 
 interface FlightArc {
     startLat: number;
@@ -17,7 +18,10 @@ interface Airport {
 
 const FlightGlobe: React.FC = () => {
     const globeEl = useRef<any>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [arcsData, setArcsData] = useState<FlightArc[]>([]);
+    const [isInit, setIsInit] = useState<boolean>(false);
+    const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
 
     // Define airport markers data.
     const airportsData: Airport[] = [
@@ -66,18 +70,41 @@ const FlightGlobe: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        if (globeEl.current && globeEl.current.controls) {
+        if (globeEl.current && !isInit) {
             const controls = globeEl.current.controls();
             controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.25;
+            controls.autoRotateSpeed = 0.5;
+            controls.enableZoom = false;
+            
+            // Set initial position
+            globeEl.current.pointOfView({ lat: 25, lng: 0, altitude: 2.5 }, 1000);
+            setIsInit(true);
         }
+    }, [globeEl, isInit]);
+
+    // Handle window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     return (
-        <div style={{ position: 'relative', height: '100vh', width: '100vw' }}>
+        <div className="globe-container" ref={containerRef}>
             <Globe
                 ref={globeEl}
+                width={dimensions.width}
+                height={dimensions.height}
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                backgroundColor="rgba(0,0,0,0)"
                 arcsData={arcsData}
                 arcColor={() => 'rgba(255, 255, 255, 0.7)'}
                 arcDashAnimateTime={6000}
@@ -94,19 +121,20 @@ const FlightGlobe: React.FC = () => {
                 pointResolution={10}
             />
 
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    textAlign: 'center',
-                    color: 'white',
-                    pointerEvents: 'none',
-                }}
-            >
-                <h1 style={{ fontSize: '3rem', margin: 0 }}>Delayed?</h1>
-                <p style={{ fontSize: '1.5rem' }}>based on a TRUE story.</p>
+            <div className="title-container">
+                <h1>Delayed?</h1>
+                <p>based on a TRUE story.</p>
+            </div>
+
+            <div className="scroll-indicator">
+                <div className="scroll-icon">
+                    <div className="chevron"></div>
+                    <div className='chevron-space'></div>
+                    <div className="chevron"></div>
+                    <div className='chevron-space'></div>
+                    <div className="chevron"></div>
+                </div>
+                <span>Scroll to explore</span>
             </div>
         </div>
     );
