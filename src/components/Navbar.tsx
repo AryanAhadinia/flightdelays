@@ -74,6 +74,13 @@ const Navbar: React.FC = () => {
             Routes
           </a>
           <a
+            href="#airline-delay"
+            className={`navbar-item ${activeSection === 'airline-delay' ? 'active' : ''}`}
+            onClick={handleLinkClick}
+          >
+            Airline Delays
+          </a>
+          <a
             href="#team"
             className={`navbar-item ${activeSection === 'team' ? 'active' : ''}`}
             onClick={handleLinkClick}

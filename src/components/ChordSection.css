@@ -74,19 +74,18 @@
   box-shadow: none;
 }
 
-/* New overlay to ensure controls are always visible */
 .chord-controls-overlay {
   position: absolute;
   top: 0;
   right: 0;
   padding: 20px;
-  z-index: 1050; /* Higher than the chart */
+  z-index: 1050;
   display: flex;
   gap: 10px;
 }
 
 .action-btn {
-  position: relative; /* Changed from absolute to relative */
+  position: relative;
   z-index: 10;
   width: 40px;
   height: 40px;
@@ -105,12 +104,11 @@
   background-color: #f0f0f0;
 }
 
-/* Exit fullscreen button at the top right corner */
 .exit-fullscreen-btn {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1100; /* Higher than everything else */
+  z-index: 1100;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -144,7 +142,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   padding: 20px;
-  z-index: 1060; /* Higher than controls overlay */
+  z-index: 1060;
 }
 
 .info-box h3 {

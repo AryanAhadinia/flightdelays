@@ -23,7 +23,6 @@ const FlightGlobe: React.FC = () => {
     const [isInit, setIsInit] = useState<boolean>(false);
     const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
 
-    // Define airport markers data.
     const airportsData: Airport[] = [
         { lat: 40.6413, lng: -73.7781, name: "JFK" },
         { lat: 51.4700, lng: -0.4543, name: "LHR" },
@@ -76,13 +75,11 @@ const FlightGlobe: React.FC = () => {
             controls.autoRotateSpeed = 0.5;
             controls.enableZoom = false;
             
-            // Set initial position
             globeEl.current.pointOfView({ lat: 25, lng: 0, altitude: 2.5 }, 1000);
             setIsInit(true);
         }
     }, [globeEl, isInit]);
 
-    // Handle window resize
     useEffect(() => {
         const handleResize = () => {
             setDimensions({

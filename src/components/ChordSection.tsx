@@ -27,7 +27,6 @@ const ChordSection: React.FC = () => {
         <div className="chord-section-visualization">
           <ChordDiagram isFullscreen={isFullscreen} />
           
-          {/* Only show controls overlay when NOT in fullscreen mode */}
           {!isFullscreen && (
             <div className="chord-controls-overlay">
               <button className="action-btn fullscreen-btn" onClick={toggleFullscreen}>
@@ -38,7 +37,6 @@ const ChordSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Exit fullscreen button that's always visible when in fullscreen */}
       {isFullscreen && (
         <button 
           className="exit-fullscreen-btn"
