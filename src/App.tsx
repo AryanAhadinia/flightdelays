@@ -2,6 +2,7 @@ import React from 'react';
 import FlightGlobe from './components/FlightGlobe';
 import TeamSection from './components/TeamSection';
 import USMapSection from './components/USMapSection';
+import ChordSection from './components/ChordSection';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -16,6 +17,10 @@ const App: React.FC = () => {
       
       <section id="us-map" className="content-section">
         <USMapSection />
+      </section>
+      
+      <section id="chord" className="content-section">
+        <ChordSection />
       </section>
       
       <section id="team" className="content-section">

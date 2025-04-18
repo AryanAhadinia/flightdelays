@@ -67,6 +67,13 @@ const Navbar: React.FC = () => {
             US Map
           </a>
           <a
+            href="#chord"
+            className={`navbar-item ${activeSection === 'chord' ? 'active' : ''}`}
+            onClick={handleLinkClick}
+          >
+            Routes
+          </a>
+          <a
             href="#team"
             className={`navbar-item ${activeSection === 'team' ? 'active' : ''}`}
             onClick={handleLinkClick}
