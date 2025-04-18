@@ -70,7 +70,7 @@ const TeamSection: React.FC = () => {
               <a href="https://people.epfl.ch/seyed.neshaei/?lang=en" target="_blank" rel="noopener noreferrer" title="Homepage" className="social-icon">
                 <FaGlobe />
               </a>
-              <a href="https://github.com/pneshaei" target="_blank" rel="noopener noreferrer" title="GitHub" className="social-icon">
+              <a href="https://github.com/spneshaei" target="_blank" rel="noopener noreferrer" title="GitHub" className="social-icon">
                 <FaGithub />
               </a>
               <a href="https://ch.linkedin.com/in/spneshaei" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="social-icon">

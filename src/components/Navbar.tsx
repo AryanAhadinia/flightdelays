@@ -15,10 +15,10 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
-    
+
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -80% 0px', // Adjust this for when to consider a section in view
+      rootMargin: '-20% 0px -80% 0px',
       threshold: 0
     };
 
@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
+
     sections.forEach(section => {
       observer.observe(section);
     });
@@ -52,15 +52,22 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
-          <a 
-            href="#home" 
+          <a
+            href="#home"
             className={`navbar-item ${activeSection === 'home' ? 'active' : ''}`}
             onClick={handleLinkClick}
           >
             Home
           </a>
-          <a 
-            href="#team" 
+          <a
+            href="#us-map"
+            className={`navbar-item ${activeSection === 'us-map' ? 'active' : ''}`}
+            onClick={handleLinkClick}
+          >
+            US Map
+          </a>
+          <a
+            href="#team"
             className={`navbar-item ${activeSection === 'team' ? 'active' : ''}`}
             onClick={handleLinkClick}
           >
